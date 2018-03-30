@@ -17,14 +17,9 @@ public class HelloWorldController {
    
    @RequestMapping(path={"/"},method=RequestMethod.GET)
    public String sayHello(Model model) {
-      model.addAttribute("message","Hello Spring MVC!");
-     
-      //Java 8 LocalDate
-      DateTimeFormatter formatter=DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
-      LocalDate date=LocalDate.now();
-      model.addAttribute("date", date.format(formatter));
+      model.addAttribute("pageTitle", "Job Portal");
       
-      return "index.jsp";
+      return "index";
    }
 
 

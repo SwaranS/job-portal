@@ -17,13 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class JobCreateController {
 
-    @RequestMapping(path = {"/create-job"}, method = RequestMethod.GET)
-    public String displayJobCreationForm(Model model) {
-        return "register-job.html";
+    @RequestMapping(path = "/create-job", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> createJob() {
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/create-skills", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> createJob() {
+    public ResponseEntity<String> createSkill() {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
