@@ -1,6 +1,6 @@
-package com.job.portal.spring.controller.job.dao;
+package com.job.portal.spring.job.dao;
 
-import com.job.portal.spring.controller.job.model.JobDAOModel;
+import com.job.portal.spring.job.model.JobDAOModel;
 
 import java.util.List;
 

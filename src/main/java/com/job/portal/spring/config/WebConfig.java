@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
+@ComponentScan(basePackages = { "com.job.portal.spring.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
    @Bean

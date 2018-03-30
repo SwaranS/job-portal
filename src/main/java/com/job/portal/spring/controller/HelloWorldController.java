@@ -24,6 +24,9 @@ public class HelloWorldController {
       LocalDate date=LocalDate.now();
       model.addAttribute("date", date.format(formatter));
       
-      return "index";
+      return "index.jsp";
    }
+
+
+
 }
