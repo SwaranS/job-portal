@@ -8,7 +8,7 @@ public interface JobDAO {
 
     int insertJob(int jobId, int skillId);
 
-    List<JobDAOModel> getJob (int jobId);
+    JobDAOModel getJob (int jobId);
 
 
 }
