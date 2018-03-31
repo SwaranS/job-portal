@@ -57,7 +57,7 @@
                         </li>
                         <li><a href="/read-more/"><u>Read more</u></a></li>
                     </ul>
-                    <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                    <p><a href="/create-employer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
                 </div>
             </div>
         </div>
