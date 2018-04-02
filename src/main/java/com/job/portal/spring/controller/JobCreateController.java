@@ -8,8 +8,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -22,14 +24,16 @@ public class JobCreateController {
     private JobDAO JobDAOImpl;
 
 
-
-    @RequestMapping(path = "/create-job", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> createJob() {
+    @RequestMapping(path = "/create-job/{userName}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> createJob(@PathVariable String userName) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        System.out.println(JobDAOImpl.getJob(1));
-        return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
+        if (userName.equals("bobby"))
+            return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
+        else
+            return new ResponseEntity<>("{\"Not Auth\": \"Not Allowed to see page\"}", httpHeaders, HttpStatus.UNAUTHORIZED);
+
     }
 
     @RequestMapping(path = "/create-skills", method = RequestMethod.GET, produces = "application/json")
@@ -38,6 +42,17 @@ public class JobCreateController {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
         return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/create-job-example", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> createJobExample(@RequestParam("companyName") String companyName) {
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        if (companyName.equals("TCS"))
+            return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
+        else
+            return new ResponseEntity<>("{\"Not Auth\": \"Not Allowed to create JOb" +
+                    "\"}", httpHeaders, HttpStatus.UNAUTHORIZED);
     }
 
 }
