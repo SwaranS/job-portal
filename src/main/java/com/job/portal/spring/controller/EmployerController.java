@@ -14,6 +14,12 @@ public class EmployerController {
         return "employer/create-employer";
     }
 
+    @RequestMapping(path = "/create-company", method = RequestMethod.GET)
+    public String createCompany(Model model) {
+        model.addAttribute("pageTitle", "Job Portal");
+        return "employer/create-company";
+    }
+
     //TODO :Register Controller
 
 }

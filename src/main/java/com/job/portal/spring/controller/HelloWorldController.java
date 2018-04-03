@@ -19,7 +19,7 @@ public class HelloWorldController {
    public String sayHello(Model model) {
       model.addAttribute("pageTitle", "Job Portal");
       
-      return "index";
+      return "/index";
    }
 
 

@@ -26,6 +26,7 @@ public class RootConfig {
 
    @Bean (name = "mySqlTemplate")
     public JdbcTemplate jdbcTemplate(){
+
        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
        return jdbcTemplate;
    }
