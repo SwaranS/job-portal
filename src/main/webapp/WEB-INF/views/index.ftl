@@ -14,7 +14,7 @@
     <div class="modal-content">
         <div class="modal-header">
 
-            <h4 class="modal-title" id="myModalLabel">Login to site.com</h4>
+            <h4 class="modal-title" id="myModalLabel">Welcome to "Job Portal"</h4>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -22,6 +22,7 @@
                     <div class="well">
                         <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
                             <div class="form-group">
+                                <p>Please login before entering</p>
                                 <label for="username" class="control-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" value=""
                                        required="" title="Please enter you username" placeholder="example@gmail.com">
@@ -57,7 +58,8 @@
                         </li>
                         <li><a href="/read-more/"><u>Read more</u></a></li>
                     </ul>
-                    <p><a href="/create-employer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                    <p><a href="/create-employer/" class="btn btn-info btn-block">Register as an Employer</a></p>
+                    <p><a href="/create-applicant/" class="btn btn-info btn-block">Register as an Applicant</a></p>
                 </div>
             </div>
         </div>
