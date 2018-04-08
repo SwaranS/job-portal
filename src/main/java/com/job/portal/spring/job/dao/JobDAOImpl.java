@@ -4,11 +4,7 @@ import com.job.portal.spring.job.model.JobDAOModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @Service
 public class JobDAOImpl implements JobDAO {
@@ -33,6 +29,7 @@ public class JobDAOImpl implements JobDAO {
                 resultSet.getString("title"),resultSet.getString("description")));
 
     }
+
 
 
 
