@@ -28,14 +28,9 @@ public class JobDAOImpl implements JobDAO {
     @Override
     public JobDAOModel getJob(int jobId) {
         Object[] params = {jobId};
-        return (JobDAOModel) mySqlTemplate.queryForObject(GET_JOBS, params, new RowMapper() {
-            @Override
-            public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-                return new JobDAOModel(resultSet.getInt("id"),
-                        resultSet.getString("title"),resultSet.getString("description"));
-
-            }
-        });
+        return (JobDAOModel) mySqlTemplate.queryForObject(GET_JOBS, params, (resultSet, i)
+                -> new JobDAOModel(resultSet.getInt("id"),
+                resultSet.getString("title"),resultSet.getString("description")));
 
     }
 
