@@ -28,17 +28,26 @@ public class JobCreateController {
     private JobService jobServiceImpl;
 
 
-
-    @RequestMapping(path = "/create-job/{userName}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> createJob(@PathVariable String userName) {
+    /**
+     * @param jobTitle
+     * @param jobDescription
+     * @param companyId
+     * @param recruiterId
+     * @return
+     * Expected example http://localhost:8080/create-job?jobTitle=Titlte&jobDescription=desc&companyId=1&recruiterId=2
+     */
+    @RequestMapping(path = "/create-job", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> createJob(@RequestParam("jobTitle") String jobTitle,
+                                            @RequestParam("jobDescription") String jobDescription,
+                                            @RequestParam("companyId") int companyId,
+                                            @RequestParam("recruiterId") int recruiterId) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        int creationResponse = jobServiceImpl.insertJob(jobTitle, jobDescription, companyId, recruiterId);
+        if (creationResponse == 1)
+            return new ResponseEntity<>("Job Successfully Created", httpHeaders, HttpStatus.OK);
 
-        if (userName.equals("bobby"))
-            return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
-        else
-            return new ResponseEntity<>("{\"Not Auth\": \"Not Allowed to see page\"}", httpHeaders, HttpStatus.UNAUTHORIZED);
-
+        return new ResponseEntity<>("Some Error Happened", httpHeaders, HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(path = "/create-skills", method = RequestMethod.GET, produces = "application/json")
@@ -66,8 +75,8 @@ public class JobCreateController {
         JobDAOModel jobDAOModel = jobServiceImpl.getJob(jobId);
         System.out.println("Job Desc from DB " + jobDAOModel.getJobDescription());
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-            return new ResponseEntity<>("{\"Job Title\": \"Not Allowed to create JOb" +
-                    "\"}", httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>("{\"Job Title\": \"Not Allowed to create JOb" +
+                "\"}", httpHeaders, HttpStatus.OK);
     }
 
 

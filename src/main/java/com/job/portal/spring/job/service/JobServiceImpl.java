@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JobServiceImpl implements JobService{
+public class JobServiceImpl implements JobService {
 
     @Autowired
     @Qualifier("jobDAOImpl")
@@ -15,6 +15,11 @@ public class JobServiceImpl implements JobService{
 
     public JobDAOModel getJob(int jobId) {
         return jobDAO.getJob(jobId);
+    }
+
+    public int insertJob(String title, String description, int companyId, int recruiterId) {
+
+        return jobDAO.insertJob(title, description, companyId, recruiterId);
     }
 
 }
