@@ -12,30 +12,12 @@ import java.util.Date;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    @Qualifier("customerDAO")
+    @Qualifier("customerDAOImpl")
     private CustomerDAO customerDAO;
 
-    public CustomerDAOModel getFirstName(String firstName) {
-        return customerDAO.getFirstName(firstName);
-    }
-
-    public int insertJob(String title, String description, int companyId, int recruiterId) {
-
-        return jobDAO.insertJob(title, description, companyId, recruiterId);
-    }
 
     @Override
-    public CustomerDAOModel getFirstName(String firstName) {
-        return null;
-    }
-
-    @Override
-    public CustomerDAOModel getMiddleName(String middleName) {
-        return null;
-    }
-
-    @Override
-    public CustomerDAOModel getLastName(String lastName) {
+    public CustomerDAOModel getCustomer(String customerId) {
         return null;
     }
 

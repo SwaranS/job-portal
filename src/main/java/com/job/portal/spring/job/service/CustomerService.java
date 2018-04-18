@@ -6,9 +6,12 @@ import java.util.Date;
 
 public interface CustomerService {
 
-    CustomerDAOModel getFirstName(String firstName);
-    CustomerDAOModel getMiddleName(String middleName);
-    CustomerDAOModel getLastName(String lastName);
+    /**
+     *
+     * @param customerId
+     * @return
+     */
+    CustomerDAOModel getCustomer(String customerId);
 
     /**
      *

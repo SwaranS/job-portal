@@ -2,11 +2,11 @@ package com.job.portal.spring.job.dao;
 
 import com.job.portal.spring.job.model.CustomerDAOModel;
 
-public interface CustomerDAO {
+public interface CustomerDAO  {
 
     int insertCustomer(String first_name, String last_name, String middle_name);
 
-    CustomerDAOModel getCustomer (String firstName, String middleName, String lastName);
+    CustomerDAOModel getCustomer (int customerId);
 
 
 }
