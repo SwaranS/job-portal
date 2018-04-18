@@ -1,7 +1,7 @@
 package com.job.portal.spring.controller;
 
 import com.job.portal.spring.job.model.CustomerDAOModel;
-import com.job.portal.spring.job.service.JobService;
+import com.job.portal.spring.job.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class JobCreateController {
 
     @Autowired
-    @Qualifier("jobServiceImpl")
-    private JobService jobServiceImpl;
+    @Qualifier("customerServiceImpl")
+    private CustomerService customerServiceImpl;
 
 
     /**
@@ -40,7 +40,7 @@ public class JobCreateController {
                                             @RequestParam("recruiterId") int recruiterId) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        int creationResponse = jobServiceImpl.insertJob(jobTitle, jobDescription, companyId, recruiterId);
+        int creationResponse = customerServiceImpl.insertJob(jobTitle, jobDescription, companyId, recruiterId);
         if (creationResponse == 1)
             return new ResponseEntity<>("Job Successfully Created", httpHeaders, HttpStatus.OK);
 
@@ -69,7 +69,7 @@ public class JobCreateController {
     @RequestMapping(path = "/get-job", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<String> getJobExample(@RequestParam("jobIId") int jobId) {
         final HttpHeaders httpHeaders = new HttpHeaders();
-        CustomerDAOModel customerDAOModel = jobServiceImpl.getJob(jobId);
+        CustomerDAOModel customerDAOModel = customerServiceImpl.getJob(jobId);
         System.out.println("Job Desc from DB " + customerDAOModel.getJobDescription());
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>("{\"Job Title\": \"Not Allowed to create JOb" +

@@ -4,7 +4,7 @@ import com.job.portal.spring.job.model.CustomerDAOModel;
 
 import java.util.Date;
 
-public interface JobService {
+public interface CustomerService {
 
     CustomerDAOModel getFirstName(String firstName);
     CustomerDAOModel getMiddleName(String middleName);
