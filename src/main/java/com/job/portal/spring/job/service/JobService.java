@@ -1,19 +1,27 @@
 package com.job.portal.spring.job.service;
 
-import com.job.portal.spring.job.model.JobDAOModel;
+import com.job.portal.spring.job.model.CustomerDAOModel;
+
+import java.util.Date;
 
 public interface JobService {
 
-    JobDAOModel getJob(int jobId);
+    CustomerDAOModel getFirstName(String firstName);
+    CustomerDAOModel getMiddleName(String middleName);
+    CustomerDAOModel getLastName(String lastName);
 
     /**
      *
-     * @param title
-     * @param description
-     * @param companyId
-     * @param recruiterId
+     * @param first_name
+     * @param middle_name
+     * @param last_name
+     * @param date_of_birth
+     * @param gender
+     * @param current_address
+     * @param email
+     * @param mobile_number
      * @return
      */
-    int insertJob(String title, String description, int companyId,int recruiterId);
+    int insertCustomer(String first_name, String middle_name, String last_name, Date date_of_birth, char gender, String current_address, String email, int mobile_number);
 
 }

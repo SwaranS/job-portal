@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by hp on 4/3/2018.
  */
 @Controller
-public class ApplicantController {
+public class CustomerController {
 
-    @RequestMapping(path = "/create-applicant", method = RequestMethod.GET)
+    @RequestMapping(path = "/customer", method = RequestMethod.GET)
     public String createApplicant(Model model) {
         model.addAttribute("pageTitle", "Job Portal");
-        return "applicant/create-applicant";
+        return "customer/customer";
     }
 }
