@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+
 
 /**
  * @author
  */
 @Controller
-public class JobCreateController {
+public class CustomerCreateController {
 
     @Autowired
     @Qualifier("customerServiceImpl")
@@ -26,21 +28,31 @@ public class JobCreateController {
 
 
     /**
-     * @param jobTitle
-     * @param jobDescription
-     * @param companyId
-     * @param recruiterId
+     * @param customerId
+     * @param firstName
+     * @param middleName
+     * @param lastName
+     * @param dateOfBirth
+     * @param gender
+     * @param currentAddress
+     * @param email
+     * @param mobileNumber
      * @return
      * Expected example http://localhost:8080/create-job?jobTitle=Titlte&jobDescription=desc&companyId=1&recruiterId=2
      */
     @RequestMapping(path = "/create-job", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> createJob(@RequestParam("jobTitle") String jobTitle,
-                                            @RequestParam("jobDescription") String jobDescription,
-                                            @RequestParam("companyId") int companyId,
-                                            @RequestParam("recruiterId") int recruiterId) {
+    public ResponseEntity<String> createCustomer(@RequestParam ("customerId") int customerId,
+                                                 @RequestParam("firstName") String firstName,
+                                                 @RequestParam("middleName") String middleName,
+                                                 @RequestParam("lastName") String lastName,
+                                                 @RequestParam("dateOfBirth") Date dateOfBirth,
+                                                 @RequestParam ("gender") char gender,
+                                                 @RequestParam ("currentAddress") String currentAddress,
+                                                 @RequestParam ("email") String email,
+                                                 @RequestParam ("mobileNumber") int mobileNumber) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        int creationResponse = customerServiceImpl.insertJob(jobTitle, jobDescription, companyId, recruiterId);
+        int creationResponse = customerServiceImpl.insertCustomer(firstName,middleName,lastName, dateOfBirth, gender, currentAddress, email, mobileNumber);
         if (creationResponse == 1)
             return new ResponseEntity<>("Job Successfully Created", httpHeaders, HttpStatus.OK);
 
@@ -52,7 +64,7 @@ public class JobCreateController {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        return new ResponseEntity<>("{\"successMessage\": \"Skills Created\"}", httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>("{\"successMessage\": \"Customer Created\"}", httpHeaders, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/create-job-example", method = RequestMethod.GET, produces = "application/json")
@@ -66,15 +78,6 @@ public class JobCreateController {
                     "\"}", httpHeaders, HttpStatus.UNAUTHORIZED);
     }
 
-    @RequestMapping(path = "/get-job", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> getJobExample(@RequestParam("jobIId") int jobId) {
-        final HttpHeaders httpHeaders = new HttpHeaders();
-        CustomerDAOModel customerDAOModel = customerServiceImpl.getJob(jobId);
-        System.out.println("Job Desc from DB " + customerDAOModel.getJobDescription());
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>("{\"Job Title\": \"Not Allowed to create JOb" +
-                "\"}", httpHeaders, HttpStatus.OK);
-    }
 
 
 }
